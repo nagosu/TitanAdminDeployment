@@ -89,9 +89,9 @@
                 />
               </div>
               <div class="dropdown-menu">
-                <div>카테고리 1</div>
+                <!-- <div>카테고리 1</div>
                 <div>카테고리 2</div>
-                <div>카테고리 3</div>
+                <div>카테고리 3</div> -->
               </div>
             </div>
           </div>
@@ -99,7 +99,7 @@
             <div class="problem-add__form-select">
               <h3>유형 선택</h3>
               <div class="select-save__wrapper">
-                <div class="dropdown">
+                <div class="dropdown depth3">
                   <div class="selected">
                     유형 등록 및 수정
                     <img
@@ -109,10 +109,10 @@
                     />
                   </div>
                   <div class="dropdown-menu">
-                    <div>신규 유형 등록</div>
+                    <!-- <div>신규 유형 등록</div>
                     <div>유형 1</div>
                     <div>유형 2</div>
-                    <div>유형 3</div>
+                    <div>유형 3</div> -->
                   </div>
                 </div>
                 <div class="button__container">
@@ -121,10 +121,18 @@
                 </div>
               </div>
             </div>
-            <div class="problem-add__title-container">
-              <h3>유형 제목</h3>
-              <div class="input__container">
-                <input type="text" placeholder="텍스트를 입력해주세요." />
+            <div class="problem-add__title-wrapper">
+              <div class="problem-add__title-container">
+                <h3>유형 제목</h3>
+                <div class="input__container">
+                  <input type="text" placeholder="텍스트를 입력해주세요." />
+                </div>
+              </div>
+              <div class="problem-add__prompt-container">
+                <h3>프롬프트 번호</h3>
+                <div class="input__container">
+                  <input type="text" />
+                </div>
               </div>
             </div>
             <div class="problem-add__content">
@@ -135,6 +143,7 @@
                   <img
                     src="../../static/images/icon/svg/Add_ring.svg"
                     alt="추가"
+                    draggable="false"
                   />
                 </div>
               </div>

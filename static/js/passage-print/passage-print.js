@@ -10,9 +10,184 @@ const deleteModalMessage = document.getElementById("deleteModalMessage");
 const deleteModalCloseButton = document.getElementById(
   "deleteModalCloseButton"
 );
-const dropdowns = document.querySelectorAll(".dropdown");
 
-let selectedProblemTypes = {};
+const lectureData = {
+  교과서: textbookData,
+  모의고사: mockExamData,
+  EBS: ebsData,
+  시중단어책: sellbookData,
+};
+
+function initDropdown() {
+  const depth1Options = Object.keys(lectureData);
+  createDropdown(depth1Options, "depth1");
+  createDropdown([], "depth2");
+  createDropdown([], "depth3");
+  createDropdown([], "depth4");
+  createDropdown([], "depth5");
+}
+
+function createDropdown(options, depthClass) {
+  const dropdown = document.querySelector(`.${depthClass}`);
+  const selected = dropdown.querySelector(".selected");
+  const dropdownMenu = dropdown.querySelector(".dropdown-menu");
+
+  options.forEach((option) => {
+    const optionDiv = document.createElement("div");
+    optionDiv.textContent = option;
+    dropdownMenu.appendChild(optionDiv);
+  });
+
+  dropdown.addEventListener("click", () => {
+    dropdown.classList.toggle("active");
+    dropdownMenu.classList.toggle("active");
+  });
+
+  dropdownMenu.querySelectorAll("div").forEach((item) => {
+    item.addEventListener("click", function (e) {
+      e.stopPropagation();
+
+      const dropdown = this.closest(".dropdown");
+      const selected = dropdown.querySelector(".selected");
+      const dropdownMenu = dropdown.querySelector(".dropdown-menu");
+
+      selected.childNodes[0].nodeValue = this.textContent + " ";
+      dropdown.classList.remove("active");
+      dropdownMenu.classList.remove("active");
+
+      if (depthClass === "depth1") {
+        updateDepth2Options(this.textContent);
+      } else if (depthClass === "depth2") {
+        updateDepth3Options(this.textContent);
+      } else if (depthClass === "depth3") {
+        updateDepth4Options(this.textContent);
+      } else if (depthClass === "depth4") {
+        updateDepth5Options(this.textContent);
+      }
+    });
+  });
+}
+
+function updateDepth2Options(depth1Value) {
+  const depth2Dropdown = document.querySelector(".depth2 .dropdown-menu");
+  depth2Dropdown.innerHTML = "";
+
+  const options = Object.keys(lectureData[depth1Value]);
+  options.forEach((option) => {
+    const optionDiv = document.createElement("div");
+    optionDiv.textContent = option;
+    depth2Dropdown.appendChild(optionDiv);
+
+    optionDiv.addEventListener("click", function () {
+      const selected = document.querySelector(".depth2 .selected");
+      selected.childNodes[0].nodeValue = this.textContent + " ";
+
+      updateDepth3Options(option);
+    });
+  });
+}
+
+function updateDepth3Options(depth2Value) {
+  const depth1Selected = document
+    .querySelector(".depth1 .selected")
+    .textContent.trim();
+  const depth3Dropdown = document.querySelector(".depth3 .dropdown-menu");
+  depth3Dropdown.innerHTML = "";
+
+  const options = Object.keys(lectureData[depth1Selected][depth2Value]);
+  options.forEach((option) => {
+    const optionDiv = document.createElement("div");
+    optionDiv.textContent = option;
+    depth3Dropdown.appendChild(optionDiv);
+
+    optionDiv.addEventListener("click", function () {
+      const selected = document.querySelector(".depth3 .selected");
+      selected.childNodes[0].nodeValue = this.textContent + " ";
+
+      if (depth1Selected === "모의고사" || depth1Selected === "시중단어책") {
+        const depth4Selected = document.querySelector(".depth4 .selected");
+        depth4Selected.childNodes[0].nodeValue = "해당 사항 없음 ";
+        updateDepth5Options(option);
+      } else {
+        updateDepth4Options(option);
+      }
+    });
+  });
+}
+
+function updateDepth4Options(depth3Value) {
+  const depth1Selected = document
+    .querySelector(".depth1 .selected")
+    .textContent.trim();
+  const depth2Selected = document
+    .querySelector(".depth2 .selected")
+    .textContent.trim();
+  const depth4Dropdown = document.querySelector(".depth4 .dropdown-menu");
+  depth4Dropdown.innerHTML = "";
+
+  const options = Object.keys(
+    lectureData[depth1Selected][depth2Selected][depth3Value]
+  );
+
+  options.forEach((option) => {
+    const optionDiv = document.createElement("div");
+    optionDiv.textContent = option;
+    depth4Dropdown.appendChild(optionDiv);
+
+    optionDiv.addEventListener("click", function () {
+      const selected = document.querySelector(".depth4 .selected");
+      selected.childNodes[0].nodeValue = this.textContent + " ";
+
+      updateDepth5Options(option);
+    });
+  });
+}
+
+function updateDepth5Options(depth4Value) {
+  const depth1Selected = document
+    .querySelector(".depth1 .selected")
+    .textContent.trim();
+  const depth2Selected = document
+    .querySelector(".depth2 .selected")
+    .textContent.trim();
+  const depth3Selected = document
+    .querySelector(".depth3 .selected")
+    .textContent.trim();
+  const depth5Dropdown = document.querySelector(".depth5 .dropdown-menu");
+  depth5Dropdown.innerHTML = "";
+
+  const addNewPassage = document.createElement("div");
+  addNewPassage.textContent = "신규 지문 등록";
+  depth5Dropdown.appendChild(addNewPassage);
+
+  addNewPassage.addEventListener("click", function () {
+    const selected = document.querySelector(".depth5 .selected");
+    selected.childNodes[0].nodeValue = this.textContent + " ";
+  });
+
+  let options;
+
+  if (depth1Selected === "모의고사" || depth1Selected === "시중단어책") {
+    options = Object.keys(
+      lectureData[depth1Selected][depth2Selected][depth4Value]
+    );
+  } else {
+    options = Object.keys(
+      lectureData[depth1Selected][depth2Selected][depth3Selected][depth4Value]
+    );
+  }
+
+  options.forEach((option) => {
+    const optionDiv = document.createElement("div");
+    optionDiv.textContent = option;
+    depth5Dropdown.appendChild(optionDiv);
+
+    optionDiv.addEventListener("click", function () {
+      const selected = document.querySelector(".depth5 .selected");
+      selected.childNodes[0].nodeValue = this.textContent + " ";
+    });
+  });
+}
 
 // 저장 오류 모달 열기 함수
 function openSaveErrorModal() {
@@ -34,27 +209,9 @@ function closeDeleteModal() {
   deleteModalConfirm.style.display = "none";
 }
 
-// 드롭다운 활성화/비활성화 처리 함수
-function toggleDropdown(event, dropdown, dropdownMenu) {
-  if (dropdown.contains(event.target)) {
-    dropdown.classList.toggle("active");
-    dropdownMenu.classList.toggle("active");
-  } else {
-    dropdown.classList.remove("active");
-    dropdownMenu.classList.remove("active");
-  }
-}
-
-// 드롭다운 메뉴 항목 선택 처리 함수
-function selectDropdownItem(event, selected, dropdownMenu, dropdown, index) {
-  event.stopPropagation();
-  selected.childNodes[0].nodeValue = this.textContent;
-  selectedProblemTypes[index] = this.textContent;
-  dropdown.classList.remove("active");
-  dropdownMenu.classList.remove("active");
-}
-
 document.addEventListener("DOMContentLoaded", () => {
+  initDropdown();
+
   saveButton.addEventListener("click", openSaveErrorModal);
 
   saveErrorModalCloseButton.addEventListener("click", closeSaveErrorModal);
@@ -64,28 +221,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   deleteModalCloseButton.addEventListener("click", closeDeleteModal);
-
-  dropdowns.forEach((dropdown, index) => {
-    const selected = dropdown.querySelector(".selected");
-    const dropdownMenu = dropdown.querySelector(".dropdown-menu");
-
-    // 드롭다운 클릭시 활성화/비활성화 처리
-    document.addEventListener("click", (event) =>
-      toggleDropdown(event, dropdown, dropdownMenu)
-    );
-
-    // 각 드롭다운 항목을 클릭할 때 선택 항목 처리
-    dropdownMenu.querySelectorAll("div").forEach((item) => {
-      item.addEventListener("click", function (event) {
-        selectDropdownItem.call(
-          this,
-          event,
-          selected,
-          dropdownMenu,
-          dropdown,
-          index
-        );
-      });
-    });
-  });
 });

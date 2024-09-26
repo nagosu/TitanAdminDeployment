@@ -104,7 +104,6 @@ function createDropdown(depthLabel, options, problemIndex, depthClass) {
       // DEPTH 1, 2, 3에 따라 다른 항목 업데이트
       if (depthClass === "depth1") {
         updateDepth2Options(problemIndex, this.textContent);
-        resetDropdown(problemIndex, "depth3");
       } else if (depthClass === "depth2") {
         updateDepth3Options(problemIndex, selected.textContent);
       }
@@ -136,8 +135,6 @@ function updateDepth2Options(problemIndex, depth1Value) {
       updateDepth3Options(problemIndex, option);
     });
   });
-
-  resetDropdown(problemIndex, "depth3");
 }
 
 // DEPTH 3 옵션 업데이트 함수
@@ -166,19 +163,6 @@ function updateDepth3Options(problemIndex, depth2Value) {
       selected.childNodes[0].nodeValue = this.textContent + " ";
     });
   });
-}
-
-// DEPTH 2, 3 초기화 함수
-function resetDropdown(problemIndex, depthClass) {
-  const selected = document.querySelector(
-    `.problem__grid-item:nth-child(${problemIndex}) .${depthClass} .selected`
-  );
-  const dropdownMenu = document.querySelector(
-    `.problem__grid-item:nth-child(${problemIndex}) .${depthClass} .dropdown-menu`
-  );
-
-  selected.childNodes[0].nodeValue = `${depthClass.toUpperCase()} `; // 초기화된 텍스트
-  dropdownMenu.innerHTML = ""; // 메뉴 항목 초기화
 }
 
 // 등록 확인 모달 열기 함수
