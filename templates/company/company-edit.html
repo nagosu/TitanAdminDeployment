@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../static/css/styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 상단 네비게이션 바 -->
+      <nav class="topnav">
+        <a href="" class="topnav__title active">회사소개</a>
+        <a href="" class="topnav__title">초대장 코드</a>
+        <a href="" class="topnav__title">고객센터 게시판</a>
+        <a href="" class="topnav__title">2차 카테고리명<br />편집</a>
+        <a href="" class="topnav__title">사용자 조회 및<br />수정</a>
+        <a href="" class="topnav__title">무료 재<br />다운로드 기간</a>
+        <a href="" class="topnav__title">회원 월 토큰<br />횟수 설정</a>
+        <a href="" class="topnav__title">최종 콘텐츠 및<br />유형 등록</a>
+      </nav>
+      <!-- // 상단 네비게이션 바 -->
+
+      <!-- 콘텐츠 -->
+      <div class="main">
+        <div class="add-form__container">
+          <div class="add-form__title-wrapper">
+            <h2>제목</h2>
+            <input type="text" placeholder="텍스트를 입력해주세요" />
+          </div>
+          <div class="add-form__content-wrapper">
+            <h2>본문</h2>
+            <div class="add-form__content-column">
+              <textarea placeholder="텍스트를 입력해주세요"></textarea>
+              <div class="add-form__button-wrapper">
+                <input type="file" style="display: none" id="fileInputUpload" />
+                <button
+                  type="button"
+                  id="uploadImageBtn"
+                  onclick='document.getElementById("fileInputUpload").click()'
+                >
+                  이미지 업로드
+                </button>
+                <div class="image-file__title">test.img</div>
+                <button type="button" class="">완료</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- // 콘텐츠 -->
+    </div>
+  </body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../static/css/styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 사이드 네비게이션 바 (SNB)-->
+      <nav class="navbar">
+        <div class="navbar__title">
+          <span class="navbar__title-text">MENU</span>
+        </div>
+        <div class="navbar__menu-container">
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">초대장 코드</span></a
+          >
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">고객센터</span></a
+          >
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">카테고리명 편집</span>
+          </a>
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">이용자 조회 및 수정</span>
+          </a>
+          <div class="navbar__menu-wrapper active">
+            <a href="" class="navbar__menu-item active">
+              <span class="navbar__menu-item-text"
+                >학교 별 문제 유형 설정</span
+              ></a
+            >
+            <div class="navbar__sub-menu-wrapper">
+              <a href="" class="navbar__sub-menu-item active">
+                <span class="navbar__sub-menu-item-text">신규등록</span>
+              </a>
+              <a href="" class="navbar__sub-menu-item">
+                <span class="navbar__sub-menu-item-text">수정/삭제</span>
+              </a>
+            </div>
+          </div>
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text"
+              >지문 및 4단 출력물 등록/수정</span
+            >
+          </a>
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">문제 유형 등록/수정</span>
+          </a>
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">공지 사항 배너 설정</span>
+          </a>
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">회사소개</span>
+          </a>
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">변형문제 비율 설정</span>
+          </a>
+        </div>
+      </nav>
+      <!-- //사이드 네비게이션 바 (SNB) -->
+
+      <!-- 콘텐츠 -->
+      <div class="content">
+        <div class="school">
+          <div class="school__content">
+            <h2>신규등록</h2>
+            <div class="form__container">
+              <div class="form__input-wrapper">
+                <h3>지역명</h3>
+                <div class="form__input-container">
+                  <input type="text" class="form__input" />
+                </div>
+              </div>
+              <div class="form__input-wrapper">
+                <h3>학교명</h3>
+                <div class="form__input-container">
+                  <input type="text" class="form__input" />
+                </div>
+              </div>
+              <div class="problem__select">
+                <h3>문제 유형</h3>
+                <div class="problem__grid">
+                  <!-- <div class="problem__grid-item">
+                    <h4>문제 1.</h4>
+                    <div class="problem__dropdown-container">
+                      <span class="depth">DEPTH 1</span>
+                      <div class="dropdown depth1">
+                        <div class="selected">
+                          DETPH 1
+                          <img
+                            src="../../static/images/icon/svg/Arrow_drop_down.svg"
+                            alt="드롭다운 화살표"
+                            class="triangle"
+                          />
+                        </div>
+                        <div class="dropdown-menu">
+                          <div>객관식</div>
+                          <div>주관식</div>
+                          <div>서술형</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="problem__dropdown-container">
+                      <span class="depth">DEPTH 2</span>
+                      <div class="dropdown depth2">
+                        <div class="selected">
+                          DETPH 2
+                          <img
+                            src="../../static/images/icon/svg/Arrow_drop_down.svg"
+                            alt="드롭다운 화살표"
+                            class="triangle"
+                          />
+                        </div>
+                        <div class="dropdown-menu">
+                          <div>객관식</div>
+                          <div>주관식</div>
+                          <div>서술형</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="problem__dropdown-container">
+                      <span class="depth">DEPTH 3</span>
+                      <div class="dropdown depth3">
+                        <div class="selected">
+                          DETPH 3
+                          <img
+                            src="../../static/images/icon/svg/Arrow_drop_down.svg"
+                            alt="드롭다운 화살표"
+                            class="triangle"
+                          />
+                        </div>
+                        <div class="dropdown-menu">
+                          <div>객관식</div>
+                          <div>주관식</div>
+                          <div>서술형</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="problem__grid-item">
+                    <h4>문제 2.</h4>
+                    <div class="problem__dropdown-container">
+                      <span class="depth">DEPTH 1</span>
+                      <div class="dropdown depth1">
+                        <div class="selected">
+                          DETPH 1
+                          <img
+                            src="../../static/images/icon/svg/Arrow_drop_down.svg"
+                            alt="드롭다운 화살표"
+                            class="triangle"
+                          />
+                        </div>
+                        <div class="dropdown-menu">
+                          <div>객관식</div>
+                          <div>주관식</div>
+                          <div>서술형</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="problem__dropdown-container">
+                      <span class="depth">DEPTH 2</span>
+                      <div class="dropdown depth2">
+                        <div class="selected">
+                          DETPH 2
+                          <img
+                            src="../../static/images/icon/svg/Arrow_drop_down.svg"
+                            alt="드롭다운 화살표"
+                            class="triangle"
+                          />
+                        </div>
+                        <div class="dropdown-menu">
+                          <div>객관식</div>
+                          <div>주관식</div>
+                          <div>서술형</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="problem__dropdown-container">
+                      <span class="depth">DEPTH 3</span>
+                      <div class="dropdown depth3">
+                        <div class="selected">
+                          DETPH 3
+                          <img
+                            src="../../static/images/icon/svg/Arrow_drop_down.svg"
+                            alt="드롭다운 화살표"
+                            class="triangle"
+                          />
+                        </div>
+                        <div class="dropdown-menu">
+                          <div>객관식</div>
+                          <div>주관식</div>
+                          <div>서술형</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="school__button add">등록</button>
+        </div>
+      </div>
+      <!-- //콘텐츠 -->
+    </div>
+
+    <!-- 등록 확인 모달 -->
+    <div id="addModalConfirm" class="modal select">
+      <div class="modal__content">
+        <div class="modal__message-container">
+          <span id="addModalMessage" class="modal__message"
+            >학교별 유형을 신규<br />등록하시겠습니까?</span
+          >
+        </div>
+        <div class="modal__button-container">
+          <button id="addModalConfirmButton" class="modal__button confirm">
+            확인
+          </button>
+          <button id="addModalCancelButton" class="modal__button cancel">
+            취소
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- //등록 확인 모달 -->
+
+    <!-- 등록 완료 모달 -->
+    <div id="addDoneModalConfirm" class="modal confirm">
+      <div class="modal__content">
+        <div class="modal__message-container">
+          <span id="addDoneModalMessage" class="modal__message"
+            >학교별 유형을 신규 등록 완료했습니다.</span
+          >
+        </div>
+        <button
+          type="button"
+          id="addDoneModalCloseButton"
+          class="modal__close-button"
+        >
+          확인
+        </button>
+      </div>
+    </div>
+    <!-- //등록 완료 모달 -->
+
+    <!-- 등록 오류 모달 -->
+    <div id="addErrorModalConfirm" class="modal confirm">
+      <div class="modal__content">
+        <div class="modal__message-container">
+          <span id="addErrorModalMessage" class="modal__message"
+            >모든 정보가 입력되지 않았습니다.<br />모든 정보를 입력해
+            주세요</span
+          >
+        </div>
+        <button
+          type="button"
+          id="addErrorModalCloseButton"
+          class="modal__close-button"
+        >
+          확인
+        </button>
+      </div>
+    </div>
+    <!-- //등록 오류 모달 -->
+
+    <!-- 스크립트 -->
+    <script src="../../static/data/problem-data.js"></script>
+    <script src="../../static/js/school/school-add.js"></script>
+  </body>
+</html>

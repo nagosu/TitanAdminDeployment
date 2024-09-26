@@ -1,0 +1,105 @@
+@import "../theme/color";
+@import "../theme/effect";
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.3s;
+
+  .modal__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: $background-main-color;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 330px;
+    height: 165px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s;
+
+    .modal__message-container {
+      @include flex-center;
+      width: 100%;
+      height: 120px;
+      background-color: $background-main-color;
+
+      .modal__message {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #111;
+        white-space: nowrap;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.modal.confirm {
+  .modal__close-button {
+    @include flex-center;
+    width: 100%;
+    height: 45px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    background-color: $modal-button-color;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $modal-button-hover-color;
+    }
+  }
+}
+
+.modal.select {
+  .modal__button-container {
+    display: flex;
+    width: 100%;
+    height: 45px;
+
+    .modal__button {
+      @include flex-center;
+      width: 50%;
+      height: 100%;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.1rem;
+      transition: background-color 0.3s;
+
+      &.confirm {
+        color: #fff;
+        background-color: $modal-button-color;
+
+        &:hover {
+          background-color: $modal-button-hover-color;
+        }
+      }
+
+      &.cancel {
+        color: #111;
+        background-color: #ddd;
+
+        &:hover {
+          background-color: #bbb;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../static/css/styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 사이드 네비게이션 바 (SNB)-->
+      <nav class="navbar">
+        <div class="navbar__title">
+          <span class="navbar__title-text">MENU</span>
+        </div>
+        <div class="navbar__menu-container">
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">초대장 코드</span></a
+          >
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">고객센터</span></a
+          >
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">카테고리명 편집</span>
+          </a>
+          <a href="" class="navbar__menu-item active">
+            <span class="navbar__menu-item-text">이용자 조회 및 수정</span>
+          </a>
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">학교 별 문제 유형 설정</span>
+          </a>
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text"
+              >지문 및 4단 출력물 등록/수정</span
+            >
+          </a>
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">문제 유형 등록/수정</span>
+          </a>
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">공지 사항 배너 설정</span>
+          </a>
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">회사소개</span>
+          </a>
+          <a href="" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">변형문제 비율 설정</span>
+          </a>
+        </div>
+      </nav>
+      <!-- //사이드 네비게이션 바 (SNB) -->
+
+      <!-- 콘텐츠 -->
+      <div class="content">
+        <div class="log">
+          <h2>이용자 로그기록 조회</h2>
+          <div class="log__container">
+            <!-- 정보/조회 버튼 -->
+            <div class="log-search__container">
+              <table class="log-search__table">
+                <thead>
+                  <tr>
+                    <th>이메일</th>
+                    <th>닉네임</th>
+                    <th>총 다운로드 횟수</th>
+                    <th>다운로드 상세 조회</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>test@test.com</td>
+                    <td>김사랑</td>
+                    <td>120회</td>
+                    <td class="download__search-container">
+                      <!-- 년도/월 선택 -->
+                      <div class="date-picker">
+                        <!-- 년도 선택 -->
+                        <select id="year-select">
+                          <option value="2024">2024년</option>
+                          <option value="2023">2023년</option>
+                          <option value="2022">2022년</option>
+                          <option value="2021">2021년</option>
+                          <option value="2020">2020년</option>
+                          <option value="2019">2019년</option>
+                          <option value="2018">2018년</option>
+                          <option value="2017">2017년</option>
+                        </select>
+                        <!-- //년도 선택 -->
+
+                        <!-- 월 선택 -->
+                        <select id="month-select">
+                          <option value="1">1월</option>
+                          <option value="2">2월</option>
+                          <option value="3">3월</option>
+                          <option value="4">4월</option>
+                          <option value="5">5월</option>
+                          <option value="6">6월</option>
+                          <option value="7">7월</option>
+                          <option value="8">8월</option>
+                          <option value="9">9월</option>
+                          <option value="10">10월</option>
+                          <option value="11">11월</option>
+                          <option value="12">12월</option>
+                        </select>
+                        <!-- //월 선택 -->
+                      </div>
+                      <!-- //년도/월 선택 -->
+
+                      <!-- 조회 버튼 -->
+                      <button id="downloadSearchButton">조회</button>
+                      <!-- //조회 버튼 -->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- //정보/조회 버튼 -->
+
+            <!-- 다운로드 상세 조회 -->
+            <div class="search-result__container">
+              <div class="search-result__title">다운로드 상세 조회</div>
+              <table class="search-result__table">
+                <thead>
+                  <tr>
+                    <th>기간</th>
+                    <th>총 횟수</th>
+                    <th>강의자료</th>
+                    <th>변형문제</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>전체</td>
+                    <td>120회</td>
+                    <td>60회</td>
+                    <td>60회</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- //다운로드 상세 조회 -->
+
+            <!-- 로그기록 -->
+            <div class="history__container">
+              <div class="history__title">로그기록</div>
+              <table class="history__table">
+                <thead>
+                  <tr>
+                    <th>NO</th>
+                    <th>다운로드 파일명</th>
+                    <th>생성 유형</th>
+                    <th>다운로드 시각</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>15</td>
+                    <td class="download__file">23.08.01 강의자료.pdf</td>
+                    <td>강의자료</td>
+                    <td>23-08-01<br />17:32:23</td>
+                  </tr>
+                  <tr>
+                    <td>15</td>
+                    <td class="download__file">23.08.01 강의자료.pdf</td>
+                    <td>강의자료</td>
+                    <td>23-08-01<br />17:32:23</td>
+                  </tr>
+                  <tr>
+                    <td>15</td>
+                    <td class="download__file">23.08.01 강의자료.pdf</td>
+                    <td>강의자료</td>
+                    <td>23-08-01<br />17:32:23</td>
+                  </tr>
+                  <tr>
+                    <td>15</td>
+                    <td class="download__file">23.08.01 강의자료.pdf</td>
+                    <td>강의자료</td>
+                    <td>23-08-01<br />17:32:23</td>
+                  </tr>
+                  <tr>
+                    <td>15</td>
+                    <td class="download__file">23.08.01 강의자료.pdf</td>
+                    <td>강의자료</td>
+                    <td>23-08-01<br />17:32:23</td>
+                  </tr>
+                  <tr>
+                    <td>15</td>
+                    <td class="download__file">23.08.01 강의자료.pdf</td>
+                    <td>강의자료</td>
+                    <td>23-08-01<br />17:32:23</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- //로그기록 -->
+          </div>
+        </div>
+      </div>
+      <!-- //콘텐츠 -->
+    </div>
+
+    <!-- 조회 오류 모달 -->
+    <div id="searchErrorModalConfirm" class="modal confirm">
+      <div class="modal__content">
+        <div class="modal__message-container">
+          <span id="searchErrorModalMessage" class="modal__message"
+            >년/월을 설정해 주세요.</span
+          >
+        </div>
+        <button
+          type="button"
+          id="searchErrorModalCloseButton"
+          class="modal__close-button"
+        >
+          확인
+        </button>
+      </div>
+    </div>
+    <!-- //조회 오류 모달 -->
+
+    <!-- 스크립트 -->
+    <script src="../../static/js/user/user-log.js"></script>
+  </body>
+</html>

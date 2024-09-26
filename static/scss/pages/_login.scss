@@ -1,0 +1,78 @@
+@import "../theme/color";
+@import "../theme/effect";
+
+// 공통 스타일을 위한 Mixin 정의
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__wrapper {
+  @include flex-center;
+  flex-direction: column;
+
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .login__form-container {
+    display: flex;
+    align-items: center;
+    width: 800px;
+    height: 500px;
+    background-color: #fff;
+    padding: 0 60px;
+    gap: 40px;
+    border: 1px solid $border-light-color;
+    border-radius: $rounded-medium;
+    box-shadow: $box-shadow-medium;
+
+    .login__input-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 70%;
+      gap: 30px;
+
+      .input__wrapper {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+
+        label {
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+
+        input {
+          width: 300px;
+          height: 50px;
+          padding: 0 15px;
+          font-size: 1.1rem;
+          border: 1px solid $border-light-color;
+          border-radius: $rounded-small;
+        }
+      }
+    }
+
+    .login__button {
+      width: 170px;
+      height: 130px;
+      background-color: $primary-button-color;
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-radius: $rounded-medium;
+      box-shadow: $box-shadow-small;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: $primary-button-hover-color;
+      }
+    }
+  }
+}
