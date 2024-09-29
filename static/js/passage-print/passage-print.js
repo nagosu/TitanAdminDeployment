@@ -1,8 +1,15 @@
 const saveButton = document.querySelector(".save__button");
-const saveErrorModalConfirm = document.getElementById("saveErrorModalConfirm");
-const saveErrorModalMessage = document.getElementById("saveErrorModalMessage");
-const saveErrorModalCloseButton = document.getElementById(
-  "saveErrorModalCloseButton"
+const saveTitleErrorModalConfirm = document.getElementById(
+  "saveTitleErrorModalConfirm"
+);
+const saveTitleErrorModalCloseButton = document.getElementById(
+  "saveTitleErrorModalCloseButton"
+);
+const saveContentErrorModalConfirm = document.getElementById(
+  "saveContentErrorModalConfirm"
+);
+const saveContentErrorModalCloseButton = document.getElementById(
+  "saveContentErrorModalCloseButton"
 );
 const deleteButtons = document.querySelectorAll(".delete__button");
 const deleteModalConfirm = document.getElementById("deleteModalConfirm");
@@ -10,6 +17,10 @@ const deleteModalMessage = document.getElementById("deleteModalMessage");
 const deleteModalCloseButton = document.getElementById(
   "deleteModalCloseButton"
 );
+const inputPassageTitle = document.querySelector('input[name="지문제목"]');
+const inputPassageContent = document.querySelector('textarea[name="지문본문"]');
+const inputFiles = document.querySelectorAll('input[type="file"]');
+const inputButtons = document.querySelectorAll(".input__button");
 
 const lectureData = {
   교과서: textbookData,
@@ -189,14 +200,24 @@ function updateDepth5Options(depth4Value) {
   });
 }
 
+function updateButtonTextToFileName(input, button) {
+  const fileName = input.files[0].name;
+  button.textContent = fileName;
+}
+
 // 저장 오류 모달 열기 함수
 function openSaveErrorModal() {
-  saveErrorModalConfirm.style.display = "flex";
+  if (inputPassageTitle.value === "") {
+    saveTitleErrorModalConfirm.style.display = "flex";
+  } else if (inputPassageContent.value === "") {
+    saveContentErrorModalConfirm.style.display = "flex";
+  }
 }
 
 // 저장 오류 모달 닫기 함수
 function closeSaveErrorModal() {
-  saveErrorModalConfirm.style.display = "none";
+  saveTitleErrorModalConfirm.style.display = "none";
+  saveContentErrorModalConfirm.style.display = "none";
 }
 
 // 삭제 모달 열기 함수
@@ -214,11 +235,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   saveButton.addEventListener("click", openSaveErrorModal);
 
-  saveErrorModalCloseButton.addEventListener("click", closeSaveErrorModal);
+  saveTitleErrorModalCloseButton.addEventListener("click", closeSaveErrorModal);
+
+  saveContentErrorModalCloseButton.addEventListener(
+    "click",
+    closeSaveErrorModal
+  );
 
   deleteButtons.forEach((button) => {
     button.addEventListener("click", openDeleteModal);
   });
 
   deleteModalCloseButton.addEventListener("click", closeDeleteModal);
+
+  inputButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const input = button
+        .closest(".pdf__item-title-container")
+        .querySelector("input[type='file']");
+      input.click();
+    });
+  });
+
+  inputFiles.forEach((input) => {
+    input.addEventListener("change", () => {
+      const button = input
+        .closest(".pdf__item-title-container")
+        .querySelector(".input__button");
+      updateButtonTextToFileName(input, button);
+    });
+  });
 });

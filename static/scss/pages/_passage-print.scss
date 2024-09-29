@@ -122,17 +122,21 @@
               }
 
               button {
-                display: flex;
+                display: inline-block;
                 align-items: center;
                 justify-content: center;
                 width: 150px;
                 height: 40px;
+                padding: 0 10px;
                 background-color: $primary-button-color;
                 color: #fff;
-                font-size: 1rem;
+                font-size: 0.9rem;
                 font-weight: 600;
                 border-radius: $rounded-small;
                 transition: background-color 0.3s;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
 
                 &:hover {
                   background-color: $primary-button-hover-color;
@@ -148,7 +152,7 @@
               height: 40px;
               background-color: $primary-button-color;
               color: #fff;
-              font-size: 1rem;
+              font-size: 0.9rem;
               font-weight: 600;
               border-radius: $rounded-small;
               transition: background-color 0.3s;

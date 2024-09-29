@@ -36,6 +36,12 @@
     height: 100%;
     gap: 10px;
 
+    a {
+      display: flex;
+      width: fit-content;
+      height: 100%;
+    }
+
     button {
       width: 180px;
       height: 100%;
@@ -93,6 +99,10 @@
         font-size: 0.9rem;
         border-collapse: collapse;
       }
+
+      td:nth-child(2) {
+        cursor: pointer;
+      }
     }
   }
 
@@ -136,6 +146,15 @@
     h2 {
       font-size: 2rem;
       font-weight: 600;
+    }
+
+    .user-search-modal__close-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
     }
   }
 
@@ -437,6 +456,12 @@
     gap: 30px;
     margin-top: 20px;
 
+    hr {
+      width: 100%;
+      border-top: 1px solid #eee;
+      margin: 20px 0;
+    }
+
     .log-search__container {
       width: 100%;
       box-shadow: $box-shadow-small;
@@ -543,6 +568,12 @@
       }
     }
 
+    table.log-search__table {
+      thead {
+        background-color: #ddd;
+      }
+    }
+
     table.log-search__table,
     table.search-result__table,
     table.history__table {
@@ -573,6 +604,7 @@
         font-weight: 600;
         border: 2px solid $primary-color;
         border-bottom: none;
+        background-color: #ddd;
       }
     }
   }

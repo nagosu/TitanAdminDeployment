@@ -31,6 +31,18 @@ const deleteModalCancelButton = document.getElementById(
 );
 const inputContainer = document.querySelector(".input__container");
 const inputDropdown = document.querySelector(".input__dropdown");
+const inputDropdownItems = document.querySelectorAll(".input__dropdown-item");
+const inputSearch = document.querySelector('input[name="검색"]');
+const inputRegion = document.querySelector('input[name="지역명"]');
+const inputSchool = document.querySelector('input[name="학교명"]');
+
+function setRegionAndSchool(selectedText) {
+  const [region, school] = selectedText.split(" ");
+
+  inputSearch.value = selectedText;
+  inputRegion.value = region;
+  inputSchool.value = school;
+}
 
 // 문제 30개를 생성하는 함수
 function createProblems() {
@@ -263,4 +275,15 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", (event) =>
     toggleInputDropdown(event, inputContainer, inputDropdown)
   );
+
+  inputDropdownItems.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      const selectedText = item.textContent.trim();
+
+      setRegionAndSchool(selectedText);
+      inputDropdown.classList.remove("active");
+    });
+  });
 });

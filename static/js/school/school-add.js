@@ -61,7 +61,7 @@ function createDropdown(depthLabel, options, problemIndex, depthClass) {
   selected.classList.add("selected");
   selected.textContent = depthLabel;
   const triangle = document.createElement("img");
-  triangle.src = "/static/images/icon/svg/Arrow_drop_down.svg";
+  triangle.src = "../../static/images/icon/svg/Arrow_drop_down.svg";
   triangle.alt = "드롭다운 화살표";
   triangle.classList.add("triangle");
 

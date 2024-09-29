@@ -16,7 +16,9 @@ const blankModalMessage = document.getElementById("blankModalMessage");
 const categoryDepthAddButtons = document.querySelectorAll(
   ".category__depth-add-button"
 );
-const categoryDepthSelect = document.querySelector(".category__depth-select");
+const categoryDepthSelects = document.querySelectorAll(
+  ".category__depth-select"
+);
 const depth2Container = document.getElementById("depth2Container");
 const depth3Container = document.getElementById("depth3Container");
 const depth4Container = document.getElementById("depth4Container");
@@ -30,10 +32,9 @@ const categoryData = {
   시중단어책: sellbookData,
 };
 
-let editMode = false;
-
-// 현재 선택된 카테고리
-let currentCategory = "교과서";
+let editMode = false; // 수정 모드인지 여부
+let currentCategory = "교과서"; // 현재 선택된 카테고리
+let categoryToDelete = null; // 삭제할 카테고리
 
 // 카테고리 선택 시 데이터 로드 함수
 function loadCategoryData(
@@ -44,10 +45,13 @@ function loadCategoryData(
   depth5Container
 ) {
   const data = categoryData[category];
-  const depth2Keys = Object.keys(data[category]);
+  const depth2Keys = Object.keys(data);
 
   // depth2 데이터 로드
   depth2Container.innerHTML = "";
+  depth3Container.innerHTML = "";
+  depth4Container.innerHTML = "";
+  depth5Container.innerHTML = "";
   depth2Keys.forEach((key) => {
     const div = document.createElement("div");
     div.classList.add("category__depth-select-title-wrapper");
@@ -63,7 +67,7 @@ function loadCategoryData(
         .forEach((el) => el.classList.remove("active"));
       span.classList.add("active");
       loadDepth3Data(
-        data[category][key],
+        data[key],
         depth3Container,
         depth4Container,
         depth5Container
@@ -83,6 +87,8 @@ function loadDepth3Data(
 
   // depth3 데이터 로드
   depth3Container.innerHTML = "";
+  depth4Container.innerHTML = "";
+  depth5Container.innerHTML = "";
   depth3Keys.forEach((key) => {
     const div = document.createElement("div");
     div.classList.add("category__depth-select-title-wrapper");
@@ -104,10 +110,16 @@ function loadDepth3Data(
 
 // depth4 데이터 로드 함수
 function loadDepth4Data(depth4Data, depth4Container, depth5Container) {
-  const depth4Keys = Object.keys(depth4Data);
+  let depth4Keys = null;
+  if (currentCategory === "교과서" || currentCategory === "EBS") {
+    depth4Keys = Object.keys(depth4Data);
+  } else {
+    depth4Keys = depth4Data;
+  }
 
   // depth4 데이터 로드
   depth4Container.innerHTML = "";
+  depth5Container.innerHTML = "";
   depth4Keys.forEach((key) => {
     const div = document.createElement("div");
     div.classList.add("category__depth-select-title-wrapper");
@@ -123,8 +135,8 @@ function loadDepth4Data(depth4Data, depth4Container, depth5Container) {
         .forEach((el) => el.classList.remove("active"));
       if (currentCategory === "교과서" || currentCategory === "EBS") {
         span.classList.add("active");
+        loadDepth5Data(depth4Data[key], depth5Container);
       }
-      loadDepth5Data(depth4Data[key], depth5Container);
     });
   });
 }
@@ -157,6 +169,9 @@ categorySelectButtons.forEach((button) => {
 
     editMode = false;
     editButton.textContent = "수정";
+    makeTitlesEditable(false);
+    removeDeleteIcons();
+    hideDepthAddButtons();
 
     loadCategoryData(
       currentCategory,
@@ -167,6 +182,29 @@ categorySelectButtons.forEach((button) => {
     );
   });
 });
+
+// "항목 추가" 버튼 클릭 시 카테고리 추가 함수
+function addNewCategory(button) {
+  const categoryContainer = button.previousElementSibling;
+
+  const newCategoryWrapper = document.createElement("div");
+  newCategoryWrapper.classList.add("category__depth-select-title-wrapper");
+
+  const newCategoryTitle = document.createElement("span");
+  newCategoryTitle.classList.add("category__depth-select-title");
+  newCategoryTitle.textContent = "신규 카테고리";
+
+  newCategoryWrapper.appendChild(newCategoryTitle);
+  categoryContainer.appendChild(newCategoryWrapper);
+}
+
+function deleteCategory() {
+  if (categoryToDelete) {
+    categoryToDelete.remove();
+    categoryToDelete = null;
+    closeDeleteConfirmModal();
+  }
+}
 
 // 수정/저장 버튼 토글 함수
 function toggleEditButtonText() {
@@ -192,7 +230,9 @@ function showDepthAddButtons() {
   categoryDepthAddButtons.forEach((button) => {
     button.style.display = "flex";
   });
-  categoryDepthSelect.style.marginBottom = "80px";
+  categoryDepthSelects.forEach((item) => {
+    item.style.marginBottom = "80px";
+  });
 }
 
 // "항목 추가" 버튼 숨김 함수
@@ -200,7 +240,9 @@ function hideDepthAddButtons() {
   categoryDepthAddButtons.forEach((button) => {
     button.style.display = "none";
   });
-  categoryDepthSelect.style.marginBottom = "0";
+  categoryDepthSelects.forEach((item) => {
+    item.style.marginBottom = "0";
+  });
 }
 
 // 삭제 이미지 추가하는 함수
@@ -240,7 +282,10 @@ function attachDeleteIconEvents() {
   );
 
   deleteButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (e) => {
+      categoryToDelete = e.target.closest(
+        ".category__depth-select-title-wrapper"
+      );
       openDeleteConfirmModal();
     });
   });
@@ -290,7 +335,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   deleteModalCancelButton.addEventListener("click", closeDeleteConfirmModal);
 
-  deleteModalConfirmButton.addEventListener("click", closeDeleteConfirmModal);
+  deleteModalConfirmButton.addEventListener("click", deleteCategory);
 
   blankModalCloseButton.addEventListener("click", closeBlankModal);
+
+  categoryDepthAddButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      addNewCategory(button);
+      addDeleteIcons();
+      attachDeleteIconEvents();
+      makeTitlesEditable(true);
+    });
+  });
 });

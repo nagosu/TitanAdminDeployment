@@ -11,39 +11,55 @@
       <!-- 사이드 네비게이션 바 (SNB)-->
       <nav class="navbar">
         <div class="navbar__title">
-          <span class="navbar__title-text">MENU</span>
+          <img
+            src="../../static/images/icon/svg/logo.svg"
+            alt="TITAN"
+            draggable="false"
+          />
         </div>
         <div class="navbar__menu-container">
-          <a href="" class="navbar__menu-item">
+          <a
+            href="../invitation-code/invitation-code.html"
+            class="navbar__menu-item"
+          >
             <span class="navbar__menu-item-text">초대장 코드</span></a
           >
-          <a href="" class="navbar__menu-item">
+          <a href="../cs-center/cs-center-board.html" class="navbar__menu-item">
             <span class="navbar__menu-item-text">고객센터</span></a
           >
-          <a href="" class="navbar__menu-item">
+          <a
+            href="../category-edit/category-edit.html"
+            class="navbar__menu-item"
+          >
             <span class="navbar__menu-item-text">카테고리명 편집</span>
           </a>
-          <a href="" class="navbar__menu-item active">
+          <a href="../user/user-search.html" class="navbar__menu-item active">
             <span class="navbar__menu-item-text">이용자 조회 및 수정</span>
           </a>
-          <a href="" class="navbar__menu-item">
+          <a href="../school/school-add.html" class="navbar__menu-item">
             <span class="navbar__menu-item-text">학교 별 문제 유형 설정</span>
           </a>
-          <a href="" class="navbar__menu-item">
+          <a
+            href="../passage-print/passage-print.html"
+            class="navbar__menu-item"
+          >
             <span class="navbar__menu-item-text"
               >지문 및 4단 출력물 등록/수정</span
             >
           </a>
-          <a href="" class="navbar__menu-item">
+          <a href="../problem/problem-edit.html" class="navbar__menu-item">
             <span class="navbar__menu-item-text">문제 유형 등록/수정</span>
           </a>
-          <a href="" class="navbar__menu-item">
+          <a href="../banner/banner.html" class="navbar__menu-item">
             <span class="navbar__menu-item-text">공지 사항 배너 설정</span>
           </a>
-          <a href="" class="navbar__menu-item">
+          <a
+            href="../company/company-introduction.html"
+            class="navbar__menu-item"
+          >
             <span class="navbar__menu-item-text">회사소개</span>
           </a>
-          <a href="" class="navbar__menu-item">
+          <a href="../range/range.html" class="navbar__menu-item">
             <span class="navbar__menu-item-text">변형문제 비율 설정</span>
           </a>
         </div>
@@ -63,8 +79,12 @@
           </div>
           <div class="user__search-button-container">
             <button class="user__search-button">이용자 조회</button>
-            <button>이용자 지문 조회</button>
-            <button>이용자 로그기록 조회</button>
+            <a href="../user/user-passage.html"
+              ><button>이용자 지문 조회</button></a
+            >
+            <a href="../user/user-log.html"
+              ><button>이용자 로그기록 조회</button></a
+            >
           </div>
         </div>
         <!-- //검색란/조회 버튼 -->
@@ -86,22 +106,22 @@
             </tr>
             <tr>
               <td>23.11.20</td>
-              <td>aaa@endigo.co.kr</td>
+              <td>bbb@endigo.co.kr</td>
               <td>김쌤</td>
             </tr>
             <tr>
               <td>23.11.20</td>
-              <td>aaa@endigo.co.kr</td>
+              <td>ccc@endigo.co.kr</td>
               <td>김쌤</td>
             </tr>
             <tr>
               <td>23.11.20</td>
-              <td>aaa@endigo.co.kr</td>
+              <td>ddd@endigo.co.kr</td>
               <td>김쌤</td>
             </tr>
             <tr>
               <td>23.11.20</td>
-              <td>aaa@endigo.co.kr</td>
+              <td>eee@endigo.co.kr</td>
               <td>김쌤</td>
             </tr>
           </tbody>
@@ -134,6 +154,12 @@
     <!-- 이용자 조회 모달 -->
     <div id="userSearchModal" class="user-search-modal">
       <div class="user-search-modal__content">
+        <img
+          src="../../static/images/icon/svg/Close_round.svg"
+          alt="닫기"
+          class="user-search-modal__close-button"
+          onclick='document.getElementById("userSearchModal").style.display = "none";'
+        />
         <h2>이용자 조회</h2>
         <div class="user-search-modal__form-container">
           <div class="user-search-modal__form-wrapper">

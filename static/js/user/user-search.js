@@ -18,6 +18,10 @@ const saveModalConfirmButton = document.getElementById(
   "saveModalConfirmButton"
 );
 const saveModalCancelButton = document.getElementById("saveModalCancelButton");
+const userEmailInput = document.querySelector(".user__email-input");
+const emailTableDatas = document.querySelectorAll(
+  ".user__table td:nth-child(2)"
+);
 
 // 조회 오류 모달 열기 함수
 function openSearchErrorModal() {
@@ -66,4 +70,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   saveModalCancelButton.addEventListener("click", closeSaveModal);
+
+  emailTableDatas.forEach((email) => {
+    email.addEventListener("click", () => {
+      userEmailInput.value = email.textContent;
+    });
+  });
 });

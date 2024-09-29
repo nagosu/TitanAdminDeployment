@@ -5,7 +5,7 @@ const problemEditButton = document.querySelector(".problem__edit-button");
 const problemDepthAddButtons = document.querySelectorAll(
   ".problem__depth-add-button"
 );
-const problemDepthSelect = document.querySelector(".problem__depth-select");
+const problemDepthSelects = document.querySelectorAll(".problem__depth-select");
 const deleteModalConfirm = document.getElementById("deleteModalConfirm");
 const deleteModalMessage = document.getElementById("deleteModalMessage");
 const deleteModalConfirmButton = document.getElementById(
@@ -21,6 +21,7 @@ const depth3Container = document.querySelector(".problem__depth-select.depth3");
 let editMode = false;
 let selectedDepth1 = "";
 let selectedDepth2 = "";
+let categoryToDelete = null; // 삭제할 카테고리
 
 // depth1 항목 표시 함수
 function showDepth1Options() {
@@ -42,7 +43,8 @@ function handleDepth1Select(selected) {
   if (editMode) return;
 
   selectedDepth1 = selected;
-  depth2Container.innerHTML = ""; // 초기화
+  depth2Container.innerHTML = "";
+  depth3Container.innerHTML = "";
   const depth2Data = Object.keys(problemData[selected]);
   depth2Data.forEach((depth2) => {
     const div = document.createElement("div");
@@ -71,6 +73,29 @@ function handleDepth2Select(selected) {
     depth3Container.appendChild(div);
   });
   depth3Container.style.display = "flex"; // depth3 표시
+}
+
+// "항목 추가" 버튼 클릭 시 새 카테고리 추가 함수
+function addNewCategory(button) {
+  const categoryContainer = button.previousElementSibling;
+
+  const newCategoryWrapper = document.createElement("div");
+  newCategoryWrapper.classList.add("problem__depth-select-title-wrapper");
+
+  const newCategoryTitle = document.createElement("span");
+  newCategoryTitle.classList.add("problem__depth-select-title");
+  newCategoryTitle.textContent = "신규 카테고리";
+
+  newCategoryWrapper.appendChild(newCategoryTitle);
+  categoryContainer.appendChild(newCategoryWrapper);
+}
+
+function deleteCategory() {
+  if (categoryToDelete) {
+    categoryToDelete.remove();
+    categoryToDelete = null;
+    closeDeleteConfirmModal();
+  }
 }
 
 // 삭제 확인 모달 여는 함수
@@ -117,7 +142,10 @@ function showDepthAddButtons() {
   problemDepthAddButtons.forEach((button) => {
     button.style.display = "flex";
   });
-  problemDepthSelect.style.marginBottom = "80px";
+
+  problemDepthSelects.forEach((item) => {
+    item.style.marginBottom = "80px";
+  });
 }
 
 // "항목 추가" 버튼 숨김 함수
@@ -125,7 +153,10 @@ function hideDepthAddButtons() {
   problemDepthAddButtons.forEach((button) => {
     button.style.display = "none";
   });
-  problemDepthSelect.style.marginBottom = "0";
+
+  problemDepthSelects.forEach((item) => {
+    item.style.marginBottom = "0";
+  });
 }
 
 // 삭제 이미지 추가하는 함수
@@ -165,7 +196,10 @@ function attachDeleteIconEvents() {
   );
 
   deleteButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (e) => {
+      categoryToDelete = e.target.closest(
+        ".problem__depth-select-title-wrapper"
+      );
       openDeleteConfirmModal();
     });
   });
@@ -191,7 +225,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   problemEditButton.addEventListener("click", toggleEditButtonText);
 
-  deleteModalConfirmButton.addEventListener("click", closeDeleteConfirmModal);
+  deleteModalConfirmButton.addEventListener("click", deleteCategory);
 
   deleteModalCancelButton.addEventListener("click", closeDeleteConfirmModal);
+
+  problemDepthAddButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      addNewCategory(button);
+      addDeleteIcons();
+      attachDeleteIconEvents();
+      makeTitlesEditable(true);
+    });
+  });
 });

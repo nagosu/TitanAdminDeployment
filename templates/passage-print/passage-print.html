@@ -11,39 +11,55 @@
       <!-- 사이드 네비게이션 바 (SNB)-->
       <nav class="navbar">
         <div class="navbar__title">
-          <span class="navbar__title-text">MENU</span>
+          <img
+            src="../../static/images/icon/svg/logo.svg"
+            alt="TITAN"
+            draggable="false"
+          />
         </div>
         <div class="navbar__menu-container">
-          <a href="" class="navbar__menu-item">
+          <a
+            href="../invitation-code/invitation-code.html"
+            class="navbar__menu-item"
+          >
             <span class="navbar__menu-item-text">초대장 코드</span></a
           >
-          <a href="" class="navbar__menu-item">
+          <a href="../cs-center/cs-center-board.html" class="navbar__menu-item">
             <span class="navbar__menu-item-text">고객센터</span></a
           >
-          <a href="" class="navbar__menu-item">
+          <a
+            href="../category-edit/category-edit.html"
+            class="navbar__menu-item"
+          >
             <span class="navbar__menu-item-text">카테고리명 편집</span>
           </a>
-          <a href="" class="navbar__menu-item">
+          <a href="../user/user-search.html" class="navbar__menu-item">
             <span class="navbar__menu-item-text">이용자 조회 및 수정</span>
           </a>
-          <a href="" class="navbar__menu-item">
+          <a href="../school/school-add.html" class="navbar__menu-item">
             <span class="navbar__menu-item-text">학교 별 문제 유형 설정</span>
           </a>
-          <a href="" class="navbar__menu-item active">
+          <a
+            href="../passage-print/passage-print.html"
+            class="navbar__menu-item active"
+          >
             <span class="navbar__menu-item-text"
               >지문 및 4단 출력물 등록/수정</span
             >
           </a>
-          <a href="" class="navbar__menu-item">
+          <a href="../problem/problem-edit.html" class="navbar__menu-item">
             <span class="navbar__menu-item-text">문제 유형 등록/수정</span>
           </a>
-          <a href="" class="navbar__menu-item">
+          <a href="../banner/banner.html" class="navbar__menu-item">
             <span class="navbar__menu-item-text">공지 사항 배너 설정</span>
           </a>
-          <a href="" class="navbar__menu-item">
+          <a
+            href="../company/company-introduction.html"
+            class="navbar__menu-item"
+          >
             <span class="navbar__menu-item-text">회사소개</span>
           </a>
-          <a href="" class="navbar__menu-item">
+          <a href="../range/range.html" class="navbar__menu-item">
             <span class="navbar__menu-item-text">변형문제 비율 설정</span>
           </a>
         </div>
@@ -141,75 +157,47 @@
             <div class="passage__title-container">
               <h3>지문 제목</h3>
               <div class="input__container">
-                <input type="text" placeholder="텍스트를 입력해주세요." />
+                <input
+                  type="text"
+                  placeholder="텍스트를 입력해주세요."
+                  name="지문제목"
+                />
               </div>
             </div>
             <div class="passage__content">
               <h3>지문 본문</h3>
               <div class="column">
-                <textarea></textarea>
+                <textarea name="지문본문"></textarea>
                 <div class="pdf__container">
                   <div class="pdf__item">
                     <div class="pdf__item-title-container">
                       <h4>판서용지문</h4>
-                      <input
-                        id="pdfFileInput"
-                        type="file"
-                        style="display: none"
-                      />
-                      <button
-                        onclick='document.getElementById("pdfFileInput").click()'
-                      >
-                        PDF 파일
-                      </button>
+                      <input type="file" style="display: none" />
+                      <button class="input__button">PDF 파일</button>
                     </div>
                     <button class="delete__button">삭제</button>
                   </div>
                   <div class="pdf__item">
                     <div class="pdf__item-title-container">
                       <h4>단어</h4>
-                      <input
-                        id="pdfFileInput"
-                        type="file"
-                        style="display: none"
-                      />
-                      <button
-                        onclick='document.getElementById("pdfFileInput").click()'
-                      >
-                        PDF 파일
-                      </button>
+                      <input type="file" style="display: none" />
+                      <button class="input__button">PDF 파일</button>
                     </div>
                     <button class="delete__button">삭제</button>
                   </div>
                   <div class="pdf__item">
                     <div class="pdf__item-title-container">
                       <h4>지문분석</h4>
-                      <input
-                        id="pdfFileInput"
-                        type="file"
-                        style="display: none"
-                      />
-                      <button
-                        onclick='document.getElementById("pdfFileInput").click()'
-                      >
-                        PDF 파일
-                      </button>
+                      <input type="file" style="display: none" />
+                      <button class="input__button">PDF 파일</button>
                     </div>
                     <button class="delete__button">삭제</button>
                   </div>
                   <div class="pdf__item">
                     <div class="pdf__item-title-container">
                       <h4>워크북</h4>
-                      <input
-                        id="pdfFileInput"
-                        type="file"
-                        style="display: none"
-                      />
-                      <button
-                        onclick='document.getElementById("pdfFileInput").click()'
-                      >
-                        PDF 파일
-                      </button>
+                      <input type="file" style="display: none" />
+                      <button class="input__button">PDF 파일</button>
                     </div>
                     <button class="delete__button">삭제</button>
                   </div>
@@ -218,16 +206,8 @@
                   <div class="pdf__item">
                     <div class="pdf__item-title-container">
                       <h4>기출문제 등록</h4>
-                      <input
-                        id="pdfFileInput"
-                        type="file"
-                        style="display: none"
-                      />
-                      <button
-                        onclick='document.getElementById("pdfFileInput").click()'
-                      >
-                        엑셀 파일
-                      </button>
+                      <input type="file" style="display: none" />
+                      <button class="input__button">엑셀 파일</button>
                     </div>
                     <button class="delete__button">삭제</button>
                   </div>
@@ -241,16 +221,35 @@
     </div>
 
     <!-- 저장 오류 모달 -->
-    <div id="saveErrorModalConfirm" class="modal confirm">
+    <div id="saveTitleErrorModalConfirm" class="modal confirm">
       <div class="modal__content">
         <div class="modal__message-container">
-          <span id="saveErrorModalMessage" class="modal__message"
-            >제목 or 본문을 입력해 주세요.</span
+          <span id="saveTitleErrorModalMessage" class="modal__message"
+            >제목을 입력해 주세요.</span
           >
         </div>
         <button
           type="button"
-          id="saveErrorModalCloseButton"
+          id="saveTitleErrorModalCloseButton"
+          class="modal__close-button"
+        >
+          확인
+        </button>
+      </div>
+    </div>
+    <!-- //저장 오류 모달 -->
+
+    <!-- 저장 오류 모달 -->
+    <div id="saveContentErrorModalConfirm" class="modal confirm">
+      <div class="modal__content">
+        <div class="modal__message-container">
+          <span id="saveContentErrorModalMessage" class="modal__message"
+            >본문을 입력해 주세요.</span
+          >
+        </div>
+        <button
+          type="button"
+          id="saveContentErrorModalCloseButton"
           class="modal__close-button"
         >
           확인
