@@ -8,21 +8,82 @@
   </head>
   <body>
     <div class="container">
-      <!-- 상단 네비게이션 바 -->
-      <nav class="topnav">
-        <a href="" class="topnav__title active">회사소개</a>
-        <a href="" class="topnav__title">초대장 코드</a>
-        <a href="" class="topnav__title">고객센터 게시판</a>
-        <a href="" class="topnav__title">2차 카테고리명<br />편집</a>
-        <a href="" class="topnav__title">사용자 조회 및<br />수정</a>
-        <a href="" class="topnav__title">무료 재<br />다운로드 기간</a>
-        <a href="" class="topnav__title">회원 월 토큰<br />횟수 설정</a>
-        <a href="" class="topnav__title">최종 콘텐츠 및<br />유형 등록</a>
+      <!-- 사이드 네비게이션 바 (SNB)-->
+      <nav class="navbar">
+        <div class="navbar__title">
+          <img
+            src="../../static/images/icon/svg/logo.svg"
+            alt="TITAN"
+            draggable="false"
+          />
+        </div>
+        <div class="navbar__menu-container">
+          <a
+            href="../invitation-code/invitation-code.html"
+            class="navbar__menu-item"
+          >
+            <span class="navbar__menu-item-text">초대장 코드</span></a
+          >
+          <a href="../cs-center/cs-center-board.html" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">고객센터</span></a
+          >
+          <a
+            href="../category-edit/category-edit.html"
+            class="navbar__menu-item"
+          >
+            <span class="navbar__menu-item-text">카테고리명 편집</span>
+          </a>
+          <a href="../user/user-search.html" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">이용자 조회 및 수정</span>
+          </a>
+          <a href="../school/school-add.html" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">학교 별 문제 유형 설정</span>
+          </a>
+          <a
+            href="../passage-print/passage-print.html"
+            class="navbar__menu-item"
+          >
+            <span class="navbar__menu-item-text"
+              >지문 및 4단 출력물 등록/수정</span
+            >
+          </a>
+          <a href="../problem/problem-edit.html" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">문제 유형 등록/수정</span>
+          </a>
+          <a href="../banner/banner.html" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">공지 사항 배너 설정</span>
+          </a>
+          <div class="navbar__menu-wrapper active">
+            <a
+              href="../company/company-introduction.html"
+              class="navbar__menu-item active"
+            >
+              <span class="navbar__menu-item-text">회사소개</span>
+            </a>
+            <div class="navbar__sub-menu-wrapper">
+              <a
+                href="../company/company-introduction.html"
+                class="navbar__sub-menu-item"
+              >
+                <span class="navbar__sub-menu-item-text">회사소개</span>
+              </a>
+              <a
+                href="../company/company-edit.html"
+                class="navbar__sub-menu-item active"
+              >
+                <span class="navbar__sub-menu-item-text">보완</span>
+              </a>
+            </div>
+          </div>
+          <a href="../range/range.html" class="navbar__menu-item">
+            <span class="navbar__menu-item-text">변형문제 비율 설정</span>
+          </a>
+        </div>
       </nav>
-      <!-- // 상단 네비게이션 바 -->
+      <!-- //사이드 네비게이션 바 (SNB) -->
 
       <!-- 콘텐츠 -->
-      <div class="main">
+      <div class="content">
         <div class="add-form__container">
           <div class="add-form__title-wrapper">
             <h2>제목</h2>
