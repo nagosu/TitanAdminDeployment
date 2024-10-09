@@ -195,7 +195,10 @@ function addNewCategory(button) {
   newCategoryTitle.textContent = "신규 카테고리";
 
   newCategoryWrapper.appendChild(newCategoryTitle);
-  categoryContainer.appendChild(newCategoryWrapper);
+  categoryContainer.insertBefore(
+    newCategoryWrapper,
+    categoryContainer.firstChild
+  );
 }
 
 function deleteCategory() {

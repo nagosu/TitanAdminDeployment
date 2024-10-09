@@ -21,10 +21,18 @@ const inputPassageTitle = document.querySelector('input[name="지문제목"]');
 const inputPassageContent = document.querySelector('textarea[name="지문본문"]');
 const inputFiles = document.querySelectorAll('input[type="file"]');
 const inputButtons = document.querySelectorAll(".input__button");
+const depth2Dropdown = document.querySelector(".depth2 .dropdown-menu");
+const depth3Dropdown = document.querySelector(".depth3 .dropdown-menu");
+const depth4Dropdown = document.querySelector(".depth4 .dropdown-menu");
+const depth5Dropdown = document.querySelector(".depth5 .dropdown-menu");
+const depth2Title = document.querySelector(".depth2 .selected");
+const depth3Title = document.querySelector(".depth3 .selected");
+const depth4Title = document.querySelector(".depth4 .selected");
+const depth5Title = document.querySelector(".depth5 .selected");
 
 const lectureData = {
   교과서: textbookData,
-  모의고사: mockExamData,
+  모의고사: mockExamPassageData,
   EBS: ebsData,
   시중단어책: sellbookData,
 };
@@ -80,8 +88,15 @@ function createDropdown(options, depthClass) {
 }
 
 function updateDepth2Options(depth1Value) {
-  const depth2Dropdown = document.querySelector(".depth2 .dropdown-menu");
   depth2Dropdown.innerHTML = "";
+  depth3Dropdown.innerHTML = "";
+  depth4Dropdown.innerHTML = "";
+  depth5Dropdown.innerHTML = "";
+
+  depth2Title.childNodes[0].nodeValue = "2차 카테고리 선택 ";
+  depth3Title.childNodes[0].nodeValue = "3차 카테고리 선택 ";
+  depth4Title.childNodes[0].nodeValue = "4차 카테고리 선택 ";
+  depth5Title.childNodes[0].nodeValue = "지문 등록 및 수정 ";
 
   const options = Object.keys(lectureData[depth1Value]);
   options.forEach((option) => {
@@ -102,8 +117,14 @@ function updateDepth3Options(depth2Value) {
   const depth1Selected = document
     .querySelector(".depth1 .selected")
     .textContent.trim();
-  const depth3Dropdown = document.querySelector(".depth3 .dropdown-menu");
+
   depth3Dropdown.innerHTML = "";
+  depth4Dropdown.innerHTML = "";
+  depth5Dropdown.innerHTML = "";
+
+  depth3Title.childNodes[0].nodeValue = "3차 카테고리 선택 ";
+  depth4Title.childNodes[0].nodeValue = "4차 카테고리 선택 ";
+  depth5Title.childNodes[0].nodeValue = "지문 등록 및 수정 ";
 
   const options = Object.keys(lectureData[depth1Selected][depth2Value]);
   options.forEach((option) => {
@@ -133,8 +154,12 @@ function updateDepth4Options(depth3Value) {
   const depth2Selected = document
     .querySelector(".depth2 .selected")
     .textContent.trim();
-  const depth4Dropdown = document.querySelector(".depth4 .dropdown-menu");
+
   depth4Dropdown.innerHTML = "";
+  depth5Dropdown.innerHTML = "";
+
+  depth4Title.childNodes[0].nodeValue = "4차 카테고리 선택 ";
+  depth5Title.childNodes[0].nodeValue = "지문 등록 및 수정 ";
 
   const options = Object.keys(
     lectureData[depth1Selected][depth2Selected][depth3Value]
@@ -164,8 +189,10 @@ function updateDepth5Options(depth4Value) {
   const depth3Selected = document
     .querySelector(".depth3 .selected")
     .textContent.trim();
-  const depth5Dropdown = document.querySelector(".depth5 .dropdown-menu");
+
   depth5Dropdown.innerHTML = "";
+
+  depth5Title.childNodes[0].nodeValue = "지문 등록 및 수정 ";
 
   const addNewPassage = document.createElement("div");
   addNewPassage.textContent = "신규 지문 등록";
@@ -178,14 +205,13 @@ function updateDepth5Options(depth4Value) {
 
   let options;
 
-  if (depth1Selected === "모의고사" || depth1Selected === "시중단어책") {
-    options = Object.keys(
-      lectureData[depth1Selected][depth2Selected][depth4Value]
-    );
+  if (depth1Selected === "모의고사") {
+    options = lectureData[depth1Selected][depth2Selected][depth4Value];
+  } else if (depth1Selected === "시중단어책") {
+    options = lectureData[depth1Selected][depth2Selected][depth4Value];
   } else {
-    options = Object.keys(
-      lectureData[depth1Selected][depth2Selected][depth3Selected][depth4Value]
-    );
+    options =
+      lectureData[depth1Selected][depth2Selected][depth3Selected][depth4Value];
   }
 
   options.forEach((option) => {
